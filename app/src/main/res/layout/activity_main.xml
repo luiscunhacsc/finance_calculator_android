@@ -1,0 +1,53 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <EditText
+        android:id="@+id/editTextPresentValue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Present Value (PV)"
+        android:inputType="numberDecimal" />
+
+    <EditText
+        android:id="@+id/editTextInterestRate"
+        android:layout_below="@id/editTextPresentValue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Interest Rate (I/Y)"
+        android:inputType="numberDecimal" />
+
+    <EditText
+        android:id="@+id/editTextPeriods"
+        android:layout_below="@id/editTextInterestRate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Number of Periods (N)"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/editTextPayment"
+        android:layout_below="@id/editTextPeriods"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Periodic Payment (PMT)"
+        android:inputType="numberDecimal" />
+
+    <Button
+        android:id="@+id/buttonCalculateFV"
+        android:layout_below="@id/editTextPayment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Calculate Future Value" />
+
+    <TextView
+        android:id="@+id/textViewResult"
+        android:layout_below="@id/buttonCalculateFV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Result"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textStyle="bold" />
+
+</RelativeLayout>
