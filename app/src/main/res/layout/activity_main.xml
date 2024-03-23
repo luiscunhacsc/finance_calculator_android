@@ -1,11 +1,24 @@
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp">
 
+
+
+    <TextView
+        android:id="@+id/textViewInstructions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Leave empty the field you want to calculate and press the respective button below."
+        android:textSize="12sp"
+        android:textAlignment="center"/>
+
+
     <!-- Present Value (PV) Input -->
     <EditText
         android:id="@+id/editTextPresentValue"
+        android:layout_below="@id/textViewInstructions"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Present Value (PV)"
@@ -47,56 +60,60 @@
         android:hint="Future Value (FV)"
         android:inputType="numberDecimal|numberSigned" />
 
-    <!-- Calculate Future Value Button -->
+
+    <!-- Calculate Present Value (PV) Button -->
     <Button
-        android:id="@+id/buttonCalculateFV"
+        android:id="@+id/buttonCalculatePV"
         android:layout_below="@id/editTextFutureValue"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Calculate Future Value" />
-
-    <!-- Calculate PMT Button -->
-    <Button
-        android:id="@+id/buttonCalculatePMT"
-        android:layout_below="@id/buttonCalculateFV"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Calculate PMT" />
-
-    <!-- Calculate Number of Periods (N) Button -->
-    <Button
-        android:id="@+id/buttonCalculateN"
-        android:layout_below="@id/buttonCalculatePMT"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Calculate N" />
+        android:text="Calculate PV" />
 
     <!-- Calculate Interest per Year (I/Y) Button -->
     <!-- Note: This button is for demonstration purposes only, as the method requires a numerical solution. -->
     <Button
         android:id="@+id/buttonCalculateIY"
-        android:layout_below="@id/buttonCalculateN"
+        android:layout_below="@id/buttonCalculatePV"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Calculate I/Y" />
 
-    <!-- Calculate Present Value (PV) Button -->
+
+    <!-- Calculate Number of Periods (N) Button -->
     <Button
-        android:id="@+id/buttonCalculatePV"
+        android:id="@+id/buttonCalculateN"
         android:layout_below="@id/buttonCalculateIY"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Calculate PV" />
+        android:text="Calculate N" />
+
+    <!-- Calculate PMT Button -->
+    <Button
+        android:id="@+id/buttonCalculatePMT"
+        android:layout_below="@id/buttonCalculateN"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Calculate PMT" />
+
+
+    <!-- Calculate Future Value Button -->
+    <Button
+        android:id="@+id/buttonCalculateFV"
+        android:layout_below="@id/buttonCalculatePMT"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Calculate FV" />
 
     <!-- Result Display -->
     <TextView
         android:id="@+id/textViewResult"
-        android:layout_below="@id/buttonCalculatePV"
+        android:layout_below="@id/buttonCalculateFV"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Result"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textStyle="bold" />
+
 
     <Button
         android:id="@+id/buttonNewCalculation"
