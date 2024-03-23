@@ -71,21 +71,23 @@
 
     <!-- Calculate Interest per Year (I/Y) Button -->
     <!-- Note: This button is for demonstration purposes only, as the method requires a numerical solution. -->
-    <Button
+    <!--Button
         android:id="@+id/buttonCalculateIY"
         android:layout_below="@id/buttonCalculatePV"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Calculate I/Y" />
+     -->
 
 
     <!-- Calculate Number of Periods (N) Button -->
     <Button
         android:id="@+id/buttonCalculateN"
-        android:layout_below="@id/buttonCalculateIY"
+        android:layout_below="@id/buttonCalculatePV"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Calculate N" />
+
 
     <!-- Calculate PMT Button -->
     <Button

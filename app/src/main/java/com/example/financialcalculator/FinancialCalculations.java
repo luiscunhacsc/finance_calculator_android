@@ -54,14 +54,13 @@ public class FinancialCalculations {
      * @param iY Interest per Year (as a percentage, e.g., 6 for 6%)
      * @return Number of Periods
      */
-    public static int calculateNumberOfPeriods(double pv, double pmt, double fv, double iY) {
+    public static double calculateNumberOfPeriods(double pv, double pmt, double fv, double iY) {
         double r = iY / 100;
-        return (int) (Math.log((fv * r + pmt) / (pv * r + pmt)) / Math.log(1 + r));
+        return ((int) ((Math.log((fv * r + pmt) / (pv * r + pmt)) / Math.log(1 + r))*10.0))/10.0;
     }
 
     /**
      * Calculates the Interest per Year required to reach a future value based on present value and periodic payments.
-     * Note: This method would typically require a numerical method to solve and is not implemented in this example.
      *
      * @param pv Present Value
      * @param pmt Periodic Payment
@@ -69,9 +68,32 @@ public class FinancialCalculations {
      * @param n Number of Periods
      * @return Interest per Year (as a percentage, e.g., 6 for 6%)
      */
+
     public static double calculateInterestPerYear(double pv, double pmt, double fv, int n) {
-        // Implementing a calculation method for interest per year is beyond the scope of this example.
-        // This function is provided as a placeholder and should be replaced with a proper implementation.
-        throw new UnsupportedOperationException("Calculating interest rate is not supported in this example.");
+        double lowRate = -0.99; // Starting with a rate that is potentially too low
+        double highRate = 1.00; // Starting with a rate that is potentially too high
+        double tolerance = 0.01;
+        double midRate = 0;
+        int maxIterations = 1000;
+
+        for (int i = 0; i < maxIterations; i++) {
+            midRate = (lowRate + highRate) / 2;
+            double fMid = calculateFutureValue(pv, pmt, midRate, n) - fv;
+
+            if (Math.abs(fMid) < tolerance) {
+                return midRate * 100; // Solution found
+            }
+
+            // Adjust the bounds
+            if (fMid * calculateFutureValue(pv, pmt, lowRate, n) < 0) {
+                highRate = midRate;
+            } else {
+                lowRate = midRate;
+            }
+        }
+
+        throw new ArithmeticException("Interest rate calculation did not converge.");
     }
+
+
 }

@@ -50,6 +50,10 @@ public class MainActivity extends AppCompatActivity {
         Button buttonCalculatePV = findViewById(R.id.buttonCalculatePV);
         buttonCalculatePV.setOnClickListener(view -> calculatePV());
 
+        // Set up the button to calculate Present Value (IY)
+        // Button buttonCalculateIY = findViewById(R.id.buttonCalculateIY);
+        // buttonCalculateIY.setOnClickListener(view -> calculateInterestPerYear());
+
         // Listener for "New Calculation" button
         buttonNewCalculation.setOnClickListener(view -> resetCalculationFields());
 
@@ -120,8 +124,8 @@ public class MainActivity extends AppCompatActivity {
             double fv = Double.parseDouble(editTextFutureValue.getText().toString());
             double iY = Double.parseDouble(editTextInterestRate.getText().toString());
 
-            int n = FinancialCalculations.calculateNumberOfPeriods(pv, pmt, fv, iY);
-            displayResultAndManageButtons(String.format("Number of Periods (N): %d", n));
+            double n = FinancialCalculations.calculateNumberOfPeriods(pv, pmt, fv, iY);
+            displayResultAndManageButtons(String.format("Number of Periods (N): %.1f", n));
         } catch (NumberFormatException e) {
             displayResultAndManageButtons("Please check your input values.");
         }
@@ -140,4 +144,21 @@ public class MainActivity extends AppCompatActivity {
             displayResultAndManageButtons("Please check your input values.");
         }
     }
+
+    private void calculateInterestPerYear() {
+        try {
+            double pv = Double.parseDouble(editTextPresentValue.getText().toString());
+            double pmt = Double.parseDouble(editTextPayment.getText().toString());
+            double fv = Double.parseDouble(editTextFutureValue.getText().toString());
+            int n = Integer.parseInt(editTextPeriods.getText().toString());
+
+            double iY = FinancialCalculations.calculateInterestPerYear(pv, pmt, fv, n);
+            displayResultAndManageButtons(String.format("Interest Rate per Year (I/Y): %.2f", iY));
+
+        } catch (NumberFormatException e) {
+            displayResultAndManageButtons("Please check your input values.");
+        }
+    }
+
+
 }
