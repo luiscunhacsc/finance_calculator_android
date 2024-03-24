@@ -1,4 +1,4 @@
-package com.example.financialcalculator
+package com.luiscunhacsc.financecalculator
 
 import org.junit.Test
 
